@@ -13,9 +13,9 @@ function ProfilePage() {
   async function submit(event) {
     event.preventDefault();
     try {
-      await updateProfile(form);
-      setMessage("Profile updated successfully.");
-    } catch (error) {
+  await updateProfile(form);
+  setMessage("Profile updated successfully.");
+} catch (error) {
       setMessage(error.response?.data?.message || "Update failed.");
     }
   }

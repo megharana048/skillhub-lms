@@ -104,7 +104,7 @@ function CoursesPage() {
             error:
               error.response?.data
                 ?.message ||
-              "Unable to load courses. Check that both servers are running.",
+              "Unable to load courses.",
           });
         }
       },
@@ -140,7 +140,6 @@ function CoursesPage() {
 
     setFilters(nextFilters);
     setPage(1);
-
     updateUrl(nextFilters);
   }
 
@@ -154,34 +153,32 @@ function CoursesPage() {
     Object.values(filters).some(Boolean);
 
   return (
-    <section className="min-h-screen bg-slate-950 px-6 py-16">
+    <section className="min-h-screen bg-[#070A16] px-6 py-16">
       <div className="mx-auto max-w-7xl">
-        <div className="relative overflow-hidden rounded-[32px] border border-slate-800 bg-slate-900/80 px-8 py-12 text-white shadow-2xl shadow-black/30 sm:px-12">
-          <div className="absolute right-[-100px] top-[-100px] h-80 w-80 rounded-full bg-indigo-500/15 blur-3xl" />
-
-          <div className="absolute bottom-[-120px] left-[30%] h-72 w-72 rounded-full bg-violet-500/10 blur-3xl" />
+        <div className="relative overflow-hidden rounded-3xl border border-[#243047] bg-[#0B1120] px-8 py-12">
+          <div className="absolute right-[-100px] top-[-100px] h-72 w-72 rounded-full bg-[#6366F1]/10 blur-3xl" />
 
           <div className="relative">
-            <p className="font-bold uppercase tracking-[0.2em] text-indigo-400">
-              Explore courses
+            <p className="font-bold uppercase tracking-[0.2em] text-[#6366F1]">
+              Course library
             </p>
 
-            <h1 className="mt-4 text-4xl font-black tracking-[-0.03em] sm:text-5xl">
-              Learn skills that help you grow
+            <h1 className="mt-4 text-4xl font-black text-[#F8FAFC] sm:text-5xl">
+              Find your next skill
             </h1>
 
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-400">
-              Search by skill, category or difficulty
-              and choose a course that matches your goals.
+            <p className="mt-5 max-w-2xl text-lg leading-8 text-[#94A3B8]">
+              Explore structured courses created for
+              practical and career-focused learning.
             </p>
           </div>
         </div>
 
-        <div className="mt-8 rounded-3xl border border-slate-800 bg-slate-900/75 p-6 shadow-xl shadow-black/15 backdrop-blur">
-          <div className="mb-5 flex items-center gap-2 font-bold text-white">
+        <div className="mt-8 rounded-3xl border border-[#243047] bg-[#111827] p-6">
+          <div className="mb-5 flex items-center gap-2 font-bold text-[#F8FAFC]">
             <SlidersHorizontal
               size={20}
-              className="text-indigo-300"
+              className="text-[#A78BFA]"
             />
 
             Filter courses
@@ -194,66 +191,46 @@ function CoursesPage() {
               value={filters.search}
               onChange={changeFilter}
               placeholder="Search courses or instructors"
-              className="rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3.5 text-white outline-none placeholder:text-slate-600 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/20"
+              className="rounded-2xl border border-[#243047] bg-[#0B1120] px-4 py-3.5 text-[#F8FAFC] outline-none placeholder:text-[#64748B] focus:border-[#6366F1] focus:ring-2 focus:ring-[#6366F1]/20"
             />
 
             <select
               name="category"
               value={filters.category}
               onChange={changeFilter}
-              className="rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3.5 text-white outline-none focus:border-indigo-500"
+              className="rounded-2xl border border-[#243047] bg-[#0B1120] px-4 py-3.5 text-[#F8FAFC] outline-none focus:border-[#6366F1]"
             >
               <option value="">
                 All categories
               </option>
-
               <option>
                 Web Development
               </option>
-
-              <option>
-                JavaScript
-              </option>
-
-              <option>
-                UI/UX Design
-              </option>
-
-              <option>
-                Data Science
-              </option>
-
-              <option>
-                Business
-              </option>
+              <option>JavaScript</option>
+              <option>UI/UX Design</option>
+              <option>Data Science</option>
+              <option>Business</option>
             </select>
 
             <select
               name="level"
               value={filters.level}
               onChange={changeFilter}
-              className="rounded-2xl border border-slate-700 bg-slate-950/80 px-4 py-3.5 text-white outline-none focus:border-indigo-500"
+              className="rounded-2xl border border-[#243047] bg-[#0B1120] px-4 py-3.5 text-[#F8FAFC] outline-none focus:border-[#6366F1]"
             >
               <option value="">
                 All levels
               </option>
-
-              <option>
-                Beginner
-              </option>
-
+              <option>Beginner</option>
               <option>
                 Intermediate
               </option>
-
-              <option>
-                Advanced
-              </option>
+              <option>Advanced</option>
             </select>
           </div>
 
           <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
-            <p className="text-sm font-medium text-slate-500">
+            <p className="text-sm font-medium text-[#64748B]">
               {pagination.total || 0}{" "}
               courses found
             </p>
@@ -262,10 +239,9 @@ function CoursesPage() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="inline-flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-950/80 px-4 py-2.5 text-sm font-bold text-slate-300 hover:border-indigo-500/50 hover:text-indigo-300"
+                className="inline-flex items-center gap-2 rounded-xl border border-[#243047] bg-[#0B1120] px-4 py-2.5 text-sm font-bold text-[#94A3B8] hover:border-[#6366F1] hover:text-[#A78BFA]"
               >
                 <X size={16} />
-
                 Clear Filters
               </button>
             )}
@@ -288,30 +264,17 @@ function CoursesPage() {
           courses.length === 0 && (
             <EmptyState
               title="No courses found"
-              description="Try another keyword or clear the selected filters."
-              action={
-                hasFilters ? (
-                  <button
-                    type="button"
-                    onClick={clearFilters}
-                    className="rounded-2xl bg-gradient-to-r from-indigo-500 to-violet-600 px-6 py-3 font-bold text-white"
-                  >
-                    Clear Filters
-                  </button>
-                ) : null
-              }
+              description="Try a different keyword or clear the selected filters."
             />
           )}
 
         <div className="mt-10 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-          {courses.map(
-            (course) => (
-              <CourseCard
-                key={course._id}
-                course={course}
-              />
-            ),
-          )}
+          {courses.map((course) => (
+            <CourseCard
+              key={course._id}
+              course={course}
+            />
+          ))}
         </div>
 
         {!status.loading &&
@@ -322,16 +285,16 @@ function CoursesPage() {
                 disabled={page <= 1}
                 onClick={() =>
                   setPage(
-                    (currentPage) =>
-                      currentPage - 1,
+                    (current) =>
+                      current - 1,
                   )
                 }
-                className="rounded-xl border border-slate-700 bg-slate-900 px-5 py-2.5 font-bold text-slate-300 hover:border-indigo-500/50 hover:text-indigo-300"
+                className="rounded-xl border border-[#243047] bg-[#111827] px-5 py-2.5 font-bold text-[#94A3B8] hover:border-[#6366F1] hover:text-[#A78BFA]"
               >
                 Previous
               </button>
 
-              <span className="font-semibold text-slate-400">
+              <span className="font-semibold text-[#94A3B8]">
                 Page {page} of{" "}
                 {pagination.pages}
               </span>
@@ -343,11 +306,11 @@ function CoursesPage() {
                 }
                 onClick={() =>
                   setPage(
-                    (currentPage) =>
-                      currentPage + 1,
+                    (current) =>
+                      current + 1,
                   )
                 }
-                className="rounded-xl border border-slate-700 bg-slate-900 px-5 py-2.5 font-bold text-slate-300 hover:border-indigo-500/50 hover:text-indigo-300"
+                className="rounded-xl border border-[#243047] bg-[#111827] px-5 py-2.5 font-bold text-[#94A3B8] hover:border-[#6366F1] hover:text-[#A78BFA]"
               >
                 Next
               </button>
